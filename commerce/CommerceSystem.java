@@ -6,28 +6,29 @@ import java.util.Scanner;
 public class CommerceSystem {
 
     Scanner stdin = new Scanner(System.in);
-    public List<Product> products;
+    private List<Category> categories;
 
     //생성자
-    public CommerceSystem(List<Product> products) {
-        this.products = products;
+    public CommerceSystem(List<Category> categories) {
+        this.categories = categories;
     }
 
     // 입력과 반복문 로직을 실행하는 start함수
     public void start() {
         while (true) {
-            System.out.println("[ 실시간 커머스 플랫폼 - 전자제품]");
-
-            for (int i = 0; i < products.size(); i++) {
-                Product nowProduct = products.get(i);
-                System.out.println((i + 1) + ". " + nowProduct.name + "      |  " + nowProduct.price + "원        |" + nowProduct.explanation);
+            // 메인 메뉴
+            System.out.println("[ 실시간 커머스 플랫폼]");
+            for(int i = 0; i < categories.size(); i++) {
+                System.out.println((i + 1) + ". " + categories.get(i).getCategoryName());
             }
-            System.out.println("0. 종료             | 프로그램 종료");
-            int num = stdin.nextInt();
+            System.out.println("0. 종료           | 프로그램 종료");
 
-            if (num == 0) {
-                System.out.println("커머스 플랫폼을 종료합니다");
+            int mainSelect = stdin.nextInt();
+
+            if (mainSelect == 0) {
+                System.out.println("프로그램 종료");
                 break;
+
             }
         }
     }
