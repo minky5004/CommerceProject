@@ -1,5 +1,6 @@
 package commerce;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -7,6 +8,7 @@ public class CommerceSystem {
 
     Scanner stdin = new Scanner(System.in);
     private List<Category> categories;
+    private List<productCart> cartedProducts = new ArrayList<>();
 
     //생성자
     public CommerceSystem(List<Category> categories) {
@@ -44,11 +46,24 @@ public class CommerceSystem {
 
                     int subSelect = stdin.nextInt();
 
-                    if (subSelect == 0) break; // 뒤로가기 (메인으로)
+                    if (subSelect == 0) break;
 
                     if (subSelect > 0 && subSelect <= products.size()) {
                         Product product = products.get(subSelect - 1);
                         System.out.println("\n선택한 상품: " + product.getName() + " | " + product.getPrice() + "원 | " + product.getExplanation() + " | 재고: " + product.getStock() + "개\n");
+                        System.out.println("장바구니에 담으시겠습니까? (1. 예 / 2. 아니오)");
+
+                        int cartSelect = stdin.nextInt();
+
+                        if  (cartSelect == 1) {
+                            System.out.println("추가되었습니다");
+                            cartedProducts.add(new productCart(product,1));
+
+                        }else if (cartSelect == 2) {
+                            System.out.println("취소되었습니다.");
+                            break;
+                        }
+
                         break;
                     } else {
                         System.out.println("없는 상품 번호입니다.");
