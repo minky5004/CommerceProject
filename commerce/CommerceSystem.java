@@ -25,13 +25,17 @@ public class CommerceSystem {
             }
             System.out.println("0. 종료           | 프로그램 종료\n");
 
+            if (!(cartedProducts.isEmpty())) {
+                System.out.println("\n[주문 관리]");
+                System.out.println("4. 장바구니 확인     | 장바구니를 확인합니다.");
+                System.out.println("5. 주문 취소         | 진행중인 주문을 취소합니다.");
+            }
             int mainSelect = stdin.nextInt();
 
             if (mainSelect == 0) {
                 System.out.println("프로그램 종료");
                 break;
-            }
-            else if (mainSelect > 0 && mainSelect <= categories.size()) {
+            }else if(mainSelect > 0 && mainSelect <= categories.size()) {
                 Category category = categories.get(mainSelect - 1);
 
                 while (true) {
@@ -73,7 +77,14 @@ public class CommerceSystem {
                         System.out.println("없는 상품 번호입니다.");
                     }
                 }
-            } else {
+            } else if(mainSelect == 4 && !cartedProducts.isEmpty()) {
+
+            } else if(mainSelect == 5 && !cartedProducts.isEmpty()) {
+                cartedProducts.clear();
+                System.out.println("보류중인 주문을 모두 취소하였습니다. 장바구니를 비웁니다.");
+            }
+
+            else {
                 System.out.println("없는 카테고리 번호입니다.");
             }
         }
