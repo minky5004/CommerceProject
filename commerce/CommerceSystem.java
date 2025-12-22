@@ -51,14 +51,18 @@ public class CommerceSystem {
                     if (subSelect > 0 && subSelect <= products.size()) {
                         Product product = products.get(subSelect - 1);
                         System.out.println("\n선택한 상품: " + product.getName() + " | " + product.getPrice() + "원 | " + product.getExplanation() + " | 재고: " + product.getStock() + "개\n");
-                        System.out.println("장바구니에 담으시겠습니까? (1. 예 / 2. 아니오)");
+                        System.out.println("장바구니에 담으시겠습니까? \n 1. 확인         2. 취소");
 
                         int cartSelect = stdin.nextInt();
 
                         if  (cartSelect == 1) {
-                            System.out.println("추가되었습니다");
-                            cartedProducts.add(new productCart(product,1));
-
+                            if (product.getStock() > 0 ) {
+                                System.out.println("추가되었습니다.");
+                                cartedProducts.add(new productCart(product, 1));
+                            }else{
+                                System.out.println("재고가 부족합니다.");
+                                break;
+                            }
                         }else if (cartSelect == 2) {
                             System.out.println("취소되었습니다.");
                             break;
