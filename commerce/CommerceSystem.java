@@ -78,6 +78,25 @@ public class CommerceSystem {
                     }
                 }
             } else if(mainSelect == 4 && !cartedProducts.isEmpty()) {
+                System.out.println("[장바구니 내역]");
+
+                int totalPrice = 0;
+
+                for (productCart cartedProduct : cartedProducts) {
+                    Product product = cartedProduct.getCartedProduct();
+                    System.out.println(product.getName() + " | " + product.getPrice() + "원 | " + product.getExplanation() + " | 수량: " + cartedProduct.getStack() + "개");
+                    totalPrice += cartedProduct.sumCartedProduct(); // 각 항목 소계 합산
+                }
+
+                System.out.println("\n[ 총 주문 금액 ]");
+                System.out.println(totalPrice + "원");
+                System.out.println("\n 1. 주문 확정      2. 메인으로 돌아가기");
+
+                int orderSelect = stdin.nextInt();
+
+                if (orderSelect == 1) {
+                    System.out.println("주문이 완료되었습니다. 총 금액 : " + totalPrice + "원");
+                }
 
             } else if(mainSelect == 5 && !cartedProducts.isEmpty()) {
                 cartedProducts.clear();

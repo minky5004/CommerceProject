@@ -30,4 +30,8 @@ public class Product {
     public int getStock() {
         return stock;
     }
+
+    public void setStock(int afterStock) {
+        this.stock = afterStock;
+    }
 }
