@@ -37,18 +37,18 @@ public class CommerceSystem {
                     List<Product> products = category.getProducts();
 
                     for (int i = 0; i < products.size(); i++) {
-                        Product p = products.get(i);
-                        System.out.println((i + 1) + ". " + p.name + " | " + p.price + "원 | " + p.explanation);
+                        Product product = products.get(i);
+                        System.out.println((i + 1) + ". " + product.getName() + " | " + product.getPrice() + "원 | " + product.getStock());
                     }
-                    System.out.println("0. 카테고리 화면으로");
+                    System.out.println("0. 뒤로");
 
                     int subSelect = stdin.nextInt();
 
                     if (subSelect == 0) break; // 뒤로가기 (메인으로)
 
                     if (subSelect > 0 && subSelect <= products.size()) {
-                        Product p = products.get(subSelect - 1);
-                        System.out.println("\n선택한 상품: " + p.name + " | " + p.price + "원 | " + p.explanation + " | 재고: " + p.stock + "개");
+                        Product product = products.get(subSelect - 1);
+                        System.out.println("\n선택한 상품: " + product.getName() + " | " + product.getPrice() + "원 | " + product.getExplanation() + " | 재고: " + product.getStock() + "개\n");
                         break;
                     } else {
                         System.out.println("없는 상품 번호입니다.");
