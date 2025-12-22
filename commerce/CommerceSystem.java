@@ -40,22 +40,22 @@ public class CommerceSystem {
                         Product p = products.get(i);
                         System.out.println((i + 1) + ". " + p.name + " | " + p.price + "원 | " + p.explanation);
                     }
-                    System.out.println("0. 뒤로가기");
+                    System.out.println("0. 카테고리 화면으로");
 
-                    int productSelect = stdin.nextInt();
+                    int subSelect = stdin.nextInt();
 
-                    if (productSelect == 0) break; // 뒤로가기 (메인으로)
+                    if (subSelect == 0) break; // 뒤로가기 (메인으로)
 
-                    if (productSelect > 0 && productSelect <= products.size()) {
-                        Product p = products.get(productSelect - 1);
+                    if (subSelect > 0 && subSelect <= products.size()) {
+                        Product p = products.get(subSelect - 1);
                         System.out.println("\n선택한 상품: " + p.name + " | " + p.price + "원 | " + p.explanation + " | 재고: " + p.stock + "개");
                         break;
                     } else {
-                        System.out.println("잘못된 상품 번호입니다.");
+                        System.out.println("없는 상품 번호입니다.");
                     }
                 }
             } else {
-                System.out.println("잘못된 카테고리 번호입니다.");
+                System.out.println("없는 카테고리 번호입니다.");
             }
         }
     }
