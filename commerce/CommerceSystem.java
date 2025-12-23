@@ -85,7 +85,7 @@ public class CommerceSystem {
                 for (productCart cartedProduct : cartedProducts) {
                     Product product = cartedProduct.getCartedProduct();
                     System.out.println(product.getName() + " | " + product.getPrice() + "원 | " + product.getExplanation() + " | 수량: " + cartedProduct.getStack() + "개");
-                    totalPrice += cartedProduct.sumCartedProduct(); // 각 항목 소계 합산
+                    totalPrice += cartedProduct.sumCartedProduct();
                 }
 
                 System.out.println("\n[ 총 주문 금액 ]");
@@ -96,6 +96,20 @@ public class CommerceSystem {
 
                 if (orderSelect == 1) {
                     System.out.println("주문이 완료되었습니다. 총 금액 : " + totalPrice + "원");
+
+                    for (productCart cartedProduct : cartedProducts) {
+                        Product product = cartedProduct.getCartedProduct();
+
+                        int Stock = product.getStock();
+                        int realStock = Stock - cartedProduct.getStack();
+
+                        product.setStock(realStock);
+
+                        System.out.println(product.getName() + " 재고가 " + Stock + "개 → " + realStock + "개로 업데이트되었습니다.");
+                    }
+
+                    cartedProducts.clear();
+
                 }
 
             } else if(mainSelect == 5 && !cartedProducts.isEmpty()) {
